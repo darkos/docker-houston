@@ -24,15 +24,9 @@ docker run --name iyard-wordpress --link iyard-mysql:mysql -p 80:80 -d wordpress
 * install wordpress
 
 ### slide 3
-1. What is Docker?
-2. Technology
-3. Allows you to 
-..* package an application with all of its 
-..* dependencies into a 
-..* standardized unit for 
-..* software development.
-4. Docker containers 
-..* wrap up a piece of software 
-..* in a complete filesystem that contains everything it needs to run: 
-..* This guarantees that it will always run the same, regardless of the environment it is running in.
+* What is Docker?
+* Technology
+* Allows you to package an application with all of its dependencies into a standardized unit for software development.
+* Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: 
+* This guarantees that it will always run the same, regardless of the environment it is running in.
 
