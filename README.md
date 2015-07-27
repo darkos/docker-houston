@@ -46,6 +46,26 @@ docker run --name iyard-wordpress --link iyard-mysql:mysql -p 80:80 -d wordpress
 
 
 ### slide 6
+```
+Docker CLI
+docker search busybox
+docker pull busybox
+docker run --rm -it --name yard-busy busybox /bin/sh
+exit
+docker ps -a
+docker rm
+docker rm -f $(docker ps -aq)
 
+docker run -it --name=yard-ubuntu ubuntu:14.04 /bin/bash
+
+cid=(docker run -itd --name=yard-ubuntu ubuntu:14.04 /bin/bash)
+
+echo $cid
+docker inspect $cid
+docker history img or cont id
+docker start/stop/attach/kill/restart
+docker exec
+
+```
 
 
