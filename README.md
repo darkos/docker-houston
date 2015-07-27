@@ -33,6 +33,19 @@ docker run --name iyard-wordpress --link iyard-mysql:mysql -p 80:80 -d wordpress
 ### slide 4
 * Where to get it?
 * www.docker.com
-* 
+
 
 ### slide 5
+* Basic Concepts
+* Engine
+* Cli
+* Image
+* Container
+* Registry
+* Docker Hub
+
+
+### slide 6
+
+
+
