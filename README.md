@@ -30,3 +30,9 @@ docker run --name iyard-wordpress --link iyard-mysql:mysql -p 80:80 -d wordpress
 * Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run: 
 * This guarantees that it will always run the same, regardless of the environment it is running in.
 
+### slide 4
+* Where to get it?
+* www.docker.com
+* 
+
+### slide 5
