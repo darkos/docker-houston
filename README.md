@@ -65,7 +65,28 @@ docker inspect $cid
 docker history img or cont id
 docker start/stop/attach/kill/restart
 docker exec
-
 ```
+### apache-ex1
+apache-dockerfile-ex1
+```
+FROM ubuntu:14.04
 
+RUN apt-get -y install apache2 
+
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+```
+Commands
+```
+docker build -f apache-dockerfile-ex1 -t apache-ex1 .
+
+docker images
+
+cid=$(docker run -itd apache-ex1)
+
+docker exec $cid ip a
+
+nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
+
+curl $nid
+```
 
