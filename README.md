@@ -132,3 +132,68 @@ nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
 
 curl $nid
 ```
+
+Volume Command
+
+#### apache-ex4
+apache-dockerfile-ex4
+
+```
+FROM ubuntu:14.04
+
+VOLUME [ "/var/www/html" ]
+
+ADD index.html /var/www/html/index.html
+
+RUN \
+  apt-get update && \
+  apt-get -y install apache2 
+
+EXPOSE 80 
+
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+```
+
+Commands
+
+```
+docker build -f apache-dockerfile-ex4 -t apache-ex4 .
+
+cid=$(docker run -itd -v ~/test/index.html:/var/www/html/index.html wordpress-ex4)
+
+nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
+
+curl $nid
+```
+
+Modify index.html
+
+verify
+
+#### apache-ex5
+**ENV REFRESHED_AT**
+
+```
+FROM ubuntu:14.04
+
+MAINTAINER Darko Stefanovic  <stefanovic.darko@gmail.com>
+ENV REFRESHED_AT 2016-04-20 
+
+VOLUME [ "/var/www/html" ]
+WORKDIR /var/www/html
+
+ADD index.html /var/www/html/index.html
+
+RUN \
+  apt-get update && \
+  apt-get -y install apache2 
+
+EXPOSE 80 
+
+ENTRYPOINT ["/usr/sbin/apache2ctl"]
+CMD ["-D", "FOREGROUND"]
+```
+Demonstrate Using Variable for Refresh
+```
+docker build -f apache-dockerfile-ex5 -t apache-ex5 .
+```
