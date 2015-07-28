@@ -66,7 +66,7 @@ docker history img or cont id
 docker start/stop/attach/kill/restart
 docker exec
 ```
-### apache-ex1
+#### apache-ex1
 apache-dockerfile-ex1
 ```
 FROM ubuntu:14.04
@@ -89,4 +89,46 @@ nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
 
 curl $nid
 ```
+**Caching**
+```
+docker build -f apache-dockerfile-ex1 -t apache-ex1 .
 
+docker build --no-cache=true -f apache-dockerfile-ex1 -t apache-ex1 .
+```
+**More Commands ADD and EXPOSE**
+
+#### apache-ex3
+apache-dockerfile-ex3
+```
+FROM ubuntu:14.04
+
+RUN \
+  apt-get update && \
+  apt-get -y install apache2 
+
+ADD index.html /var/www/html/index.html
+
+EXPOSE 80 
+
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+```
+
+index.html
+
+```
+<h1>Docker Rocks!</h1>
+```
+
+Commands
+
+```
+cat index.html 
+
+docker build -f apache-dockerfile-ex3 -t apache-ex3 .
+
+cid=$(docker run -itd -P apache-ex3)
+
+nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
+
+curl $nid
+```
